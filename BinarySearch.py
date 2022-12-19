@@ -1,18 +1,27 @@
 """
-Q - Find the index of an element from a given list.
-a = [4,5,8,10,11,6,2,1]
-target = 10
-return index value 3 if found else -1.
+You get a sorted list.
+Find an element in the given list using binary search.
 """
 
-def search(input_list,elem):
-    for i, j in enumerate(input_list):
-        if j == elem:
-            return i
+#A = [1, 2, 3, 4, 5, 6, 7]
+A = [11, 12, 13, 14, 15, 16, 17]
+elem = 17
+
+def binary_search(A,elem):
+
+    last_elem_index = len(A) - 1
+    start_elem_index = 0
+    while start_elem_index <= last_elem_index:
+        mid_index = (start_elem_index + last_elem_index) // 2
+        mid_value = A[mid_index]
+        if mid_value == elem:
+            return mid_index
+        else:
+            if elem < mid_value:
+                last_elem_index = mid_index - 1
+            else:
+                start_elem_index = mid_index + 1
     return -1
 
-
-
-result = search([4,5,8,10,11,6,2,1],1)
-
+result = binary_search(A, elem)
 print(result)
